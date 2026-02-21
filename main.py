@@ -7,41 +7,26 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 
-import ai_explainer
+import weather
 import calendar_service
 import outfit_engine
-<<<<<<< ours
 import ai_explainer
-from wardrobe import router as wardrobe_router
-=======
-import weather
+
 from database import engine, get_db
 from models import Base, Clothing
-
-UPLOAD_DIR = Path("static/uploads")
-UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
->>>>>>> theirs
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Ensure database tables exist
 Base.metadata.create_all(bind=engine)
-
 
 # Homepage
 @app.get("/")
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-
-# Upload wardrobe route
-@app.get("/upload")
-def upload_page(request: Request):
-    return templates.TemplateResponse("upload.html", {"request": request})
-
-
+# Upload wardrobe route placeholder
 @app.post("/upload")
 async def upload_item(
     name: str = Form(...),
@@ -82,8 +67,7 @@ def wardrobe_page(request: Request, db: Session = Depends(get_db)):
     )
 
 
-# Generate outfit route
-@app.get("/generate")
+# Generate outfit route placeholder
 def generate_outfit(request: Request, db: Session = Depends(get_db)):
     weather_data = weather.get_weather()
     next_event = calendar_service.get_next_event()
@@ -93,12 +77,6 @@ def generate_outfit(request: Request, db: Session = Depends(get_db)):
     outfit = outfit_engine.generate_outfit(wardrobe, weather_data, style)
     explanation = ai_explainer.generate_explanation(outfit, weather_data, next_event)
 
-<<<<<<< ours
-    
-    return templates.TemplateResponse("outfit.html", {"request": request})
-
-app.include_router(wardrobe_router)
-=======
     return templates.TemplateResponse(
         "outfit.html",
         {
@@ -107,4 +85,3 @@ app.include_router(wardrobe_router)
             "explanation": explanation,
         },
     )
->>>>>>> theirs
