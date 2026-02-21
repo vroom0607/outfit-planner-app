@@ -15,6 +15,9 @@ import ai_explainer
 from database import engine, get_db
 from models import Base, Clothing
 
+UPLOAD_DIR = Path("static/uploads")
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
