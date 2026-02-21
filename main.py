@@ -14,6 +14,7 @@ import ai_explainer
 
 from database import engine, get_db
 from models import Base, Clothing
+from wardrobe import router as wardrobe_router
 
 UPLOAD_DIR = Path("static/uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
@@ -21,6 +22,7 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+app.include_router(wardrobe_router)
 
 Base.metadata.create_all(bind=engine)
 
@@ -28,6 +30,11 @@ Base.metadata.create_all(bind=engine)
 @app.get("/")
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+
+@app.get("/upload")
+def upload_page(request: Request):
+    return templates.TemplateResponse("upload.html", {"request": request})
 
 # Upload wardrobe route placeholder
 @app.post("/upload")
@@ -54,6 +61,7 @@ async def upload_item(
     )
     db.add(clothing)
     db.commit()
+    db.refresh(clothing)
 
     return RedirectResponse(url="/wardrobe", status_code=303)
 
