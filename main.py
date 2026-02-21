@@ -10,8 +10,17 @@ from sqlalchemy.orm import Session
 import ai_explainer
 import calendar_service
 import outfit_engine
+<<<<<<< ours
 import ai_explainer
 from wardrobe import router as wardrobe_router
+=======
+import weather
+from database import engine, get_db
+from models import Base, Clothing
+
+UPLOAD_DIR = Path("static/uploads")
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+>>>>>>> theirs
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -84,7 +93,18 @@ def generate_outfit(request: Request, db: Session = Depends(get_db)):
     outfit = outfit_engine.generate_outfit(wardrobe, weather_data, style)
     explanation = ai_explainer.generate_explanation(outfit, weather_data, next_event)
 
+<<<<<<< ours
     
     return templates.TemplateResponse("outfit.html", {"request": request})
 
 app.include_router(wardrobe_router)
+=======
+    return templates.TemplateResponse(
+        "outfit.html",
+        {
+            "request": request,
+            "outfit": outfit,
+            "explanation": explanation,
+        },
+    )
+>>>>>>> theirs
