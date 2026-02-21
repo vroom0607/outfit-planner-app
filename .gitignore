@@ -1,2 +1,7 @@
 .env
 .vscode/
+venv
+__pycache__
+token.json
+credentials.json
+static/uploads
