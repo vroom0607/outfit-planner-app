@@ -1,8 +1,9 @@
 .env
 .vscode/
 venv
-__pycache__
+__pycache__/
 token.json
 credentials.json
 static/uploads
 wardrobe.db
+.DS_Store

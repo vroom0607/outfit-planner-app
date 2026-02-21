@@ -79,6 +79,7 @@ def wardrobe_page(request: Request, db: Session = Depends(get_db)):
 
 
 # Generate outfit route placeholder
+@app.get("/generate")
 def generate_outfit(request: Request, db: Session = Depends(get_db)):
     weather_data = weather.get_weather()
     next_event = calendar_service.get_next_event()
