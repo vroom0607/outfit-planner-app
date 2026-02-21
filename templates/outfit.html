@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-lg font-semibold mb-4">Your Generated Outfit</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {% for item in outfit %}
+    <div class="bg-white p-4 rounded shadow">
+        <img src="{{ item.image_path }}" alt="{{ item.name }}" class="h-32 mx-auto">
+        <p class="text-center mt-2">{{ item.name }} ({{ item.category }})</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="mt-6 p-4 bg-gray-100 rounded">
+    <h3 class="font-semibold mb-2">Why this outfit?</h3>
+    <p>{{ explanation }}</p>
+</div>
+{% endblock %}
