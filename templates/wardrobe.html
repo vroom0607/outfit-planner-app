@@ -1,35 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 class="text-lg font-semibold mb-4">Your Wardrobe</h2>
-<table class="min-w-full bg-white border">
-    <thead>
-        <tr>
-            <th class="border px-4 py-2">Name</th>
-            <th class="border px-4 py-2">Category</th>
-            <th class="border px-4 py-2">Image</th>
-            <th class="border px-4 py-2">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in wardrobe %}
-        <tr id="item-row-{{ item.id }}">
-            <td class="border px-4 py-2">{{ item.name }}</td>
-            <td class="border px-4 py-2">{{ item.category }}</td>
-            <td class="border px-4 py-2">
-                <img src="{{ item.image_path }}" alt="{{ item.name }}" class="h-16">
-            </td>
-            <td class="border px-4 py-2 text-center">
-                <form action="/wardrobe/delete/{{ item.id }}" method="post" class="inline">
-                    <button
-                        type="submit"
-                        class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                    >
-                        Delete
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<section class="wardrobe-page">
+    <h2>Your Wardrobe</h2>
+    <table class="wardrobe-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in wardrobe %}
+            <tr id="item-row-{{ item.id }}">
+                <td>{{ item.name }}</td>
+                <td>{{ item.category }}</td>
+                <td>
+                    <img src="{{ item.image_path }}" alt="{{ item.name }}" class="wardrobe-image">
+                </td>
+                <td class="actions-cell">
+                    <form action="/wardrobe/delete/{{ item.id }}" method="post">
+                        <button type="submit" class="button button-red">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
 {% endblock %}

@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.site-header {
+    background-color: #fca8ce;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+}
+
+.site-logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.site-logo:hover {
+    opacity: 0.85;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.page-content {
+    padding: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.site-footer {
+    background-color: #e5e7eb;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1.5rem;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.home {
+    text-align: center;
+}
+
+.action-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.button {
+    display: inline-block;
+    border: none;
+    border-radius: 0.35rem;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.button-green {
+    background-color: #22c55e;
+}
+
+.button-green:hover {
+    background-color: #16a34a;
+}
+
+.button-blue {
+    background-color: #3b82f6;
+}
+
+.button-blue:hover {
+    background-color: #2563eb;
+}
+
+.button-purple {
+    background-color: #a855f7;
+}
+
+.button-purple:hover {
+    background-color: #9333ea;
+}
+
+.button-red {
+    background-color: #ef4444;
+}
+
+.button-red:hover {
+    background-color: #dc2626;
+}
+
+.button-pink {
+    background-color: #fca8ce;
+}
+
+.button-pink:hover {
+    background-color: #b6457d;
+}
+
+.upload-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 560px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 0.35rem;
+    padding: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.outfit-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.outfit-card {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+    text-align: center;
+}
+
+.outfit-image {
+    display: block;
+    height: 8rem;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.outfit-explanation {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f3f4f6;
+}
+
+.outfit-explanation h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.wardrobe-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.wardrobe-table th,
+.wardrobe-table td {
+    border: 1px solid #d1d5db;
+    padding: 0.6rem;
+}
+
+.wardrobe-table th {
+    text-align: left;
+}
+
+.wardrobe-image {
+    height: 4rem;
+    width: auto;
+    object-fit: contain;
+}
+
+.actions-cell {
+    text-align: center;
+}

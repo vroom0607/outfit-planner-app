@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <title>Outfit Planner</title>
     <link href="/static/styles.css" rel="stylesheet">
-    <!-- Tailwind CDN for quick styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
-    <header class="bg-blue-600 text-white p-4 text-center">
-        <h1 class="text-2xl font-bold">Outfit Planner</h1>
+<body>
+    <header class="site-header">
+        <a href="/" class="site-logo">Outfit Planner</a>
     </header>
 
-    <main class="p-6">
+    <main class="page-content">
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-gray-200 text-center p-4 mt-6">
-        &copy; 2026 Outfit Planner 
+    <footer class="site-footer">
+        &copy; 2026 Outfit Planner
     </footer>
 </body>
 </html>

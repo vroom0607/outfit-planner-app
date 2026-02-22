@@ -20,7 +20,7 @@ This project was built for the 2026 CrimsonCode hackathon with the theme **"Rein
 - **Weather Integration**: Fetches real-time weather data using the OpenWeather API.
 - **Calendar Integration**: Connects with Google Calendar to suggest outfits appropriate for upcoming events.
 - **AI Explanations**: Provides natural-language explanations for outfit choices (using OpenAI API or mock logic for hackathon demo).
-- **Responsive Web Interface**: Minimalistic UI built with Tailwind CSS and Jinja2 templates.
+- **Responsive Web Interface**: Minimalistic UI built with CSS+HTML and Jinja2 templates.
 
 ---
 
