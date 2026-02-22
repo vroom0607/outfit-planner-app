@@ -32,7 +32,7 @@ def get_model():
                     n_gpu_layers=0,
                     use_mmap=True,
                     use_mlock=False,
-                    verbose=False,
+                    verbose=True,
                 )
                 print("Model loaded on device:", llm.device)
     return llm

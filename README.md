@@ -52,6 +52,6 @@ This project was built for the 2026 CrimsonCode hackathon with the theme **"Rein
 ## To Run
 
 Create a Python enviroment
-pip install requirements.txt
+pip install -r requirements.txt
 use uvicorn:
 uvicorn main:app --reload
