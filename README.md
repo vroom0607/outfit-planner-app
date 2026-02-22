@@ -9,7 +9,7 @@
 - Get explanations for why an outfit was recommended.
 - View uploaded wardrobe and past outfit choices.
 
-This project was built for a hackathon with the theme **"Reinventing the Wheel"**, demonstrating a new way to combine AI, weather, and personal wardrobe planning.
+This project was built for the 2026 CrimsonCode hackathon with the theme **"Reinventing the Wheel"**, demonstrating a new way to combine AI, weather, and personal wardrobe planning.
 
 ---
 
