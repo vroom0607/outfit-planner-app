@@ -59,7 +59,7 @@ async def upload_item(
         category=category,
         color="unknown",
         image_path=f"/static/uploads/{filename}",
-        tags="",
+        tags="tags_str",
         times_worn=0,
     )
     db.add(clothing)
