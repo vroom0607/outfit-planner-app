@@ -8,6 +8,7 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Image</th>
+                <th>Tags</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,6 +20,7 @@
                 <td>
                     <img src="{{ item.image_path }}" alt="{{ item.name }}" class="wardrobe-image">
                 </td>
+                <td>{{ item.tags }}</td>
                 <td class="actions-cell">
                     <form action="/wardrobe/delete/{{ item.id }}" method="post">
                         <button type="submit" class="button button-red">Delete</button>

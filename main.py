@@ -55,12 +55,12 @@ async def upload_item(
     file_path.write_bytes(file_bytes)
 
     clothing = Clothing(
-        name=name,
-        category=category,
-        color="unknown",
-        image_path=f"/static/uploads/{filename}",
-        tags="tags_str",
-        times_worn=0,
+        name = name,
+        category = category,
+        color = "unknown",
+        image_path = f"/static/uploads/{filename}",
+        tags = tags_str,
+        times_worn = 0,
     )
     db.add(clothing)
     db.commit()

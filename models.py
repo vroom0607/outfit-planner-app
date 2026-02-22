@@ -8,8 +8,8 @@ class Clothing(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
-    category = Column(String)   # top, bottom, shoes, outerwear, accessory
+    category = Column(String)   
     color = Column(String)
     image_path = Column(String)
-    tags = Column(String)       # formal, casual, gym
+    tags = Column(String)      
     times_worn = Column(Integer, default=0)
