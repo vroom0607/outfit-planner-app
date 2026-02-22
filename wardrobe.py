@@ -21,7 +21,6 @@ def wardrobe_page(request: Request, db: Session = Depends(get_db)):
         },
     )
 
-
 @router.post("/wardrobe/delete/{item_id}")
 def delete_wardrobe_item(item_id: int, db: Session = Depends(get_db)):
     item = db.query(Clothing).filter(Clothing.id == item_id).first()
