@@ -2,10 +2,6 @@ from utils.helpers import pick_random
 
 
 def generate_outfit(wardrobe, weather_data, event_type):
-    """
-    Selects items from wardrobe based on weather and event type.
-    Returns a list of clothing items.
-    """
     if not wardrobe:
         return []
 
@@ -55,11 +51,8 @@ def generate_outfit(wardrobe, weather_data, event_type):
 
     return outfit
 
-
+#converts calender event title to type of outfit
 def map_event_to_style(event_title):
-    """
-    Converts event title string to outfit type: formal, casual, athletic, etc.
-    """
     title = (event_title or "").lower()
 
     formal_keywords = ["meeting", "interview", "presentation", "office", "conference"]

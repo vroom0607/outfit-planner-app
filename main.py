@@ -3,6 +3,7 @@ from uuid import uuid4
 
 from fastapi import Depends, FastAPI, File, Form, Request, UploadFile
 from fastapi.responses import RedirectResponse
+from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
@@ -70,20 +71,16 @@ async def upload_item(
 
 #generate outfit with weather data and calender
 @app.get("/generate")
-def generate_outfit(request: Request, db: Session = Depends(get_db)):
-    weather_data = weather.get_weather() #create weather dict
-    next_event = calendar_service.get_next_event() #create calender events dict
-    style = outfit_engine.map_event_to_style(next_event) #create style dict
+def generate_outfit_stream(db: Session = Depends(get_db)):
+    weather_data = weather.get_weather()
+    next_event = calendar_service.get_next_event()
+    style = outfit_engine.map_event_to_style(next_event)
+    wardrobe = db.query(Clothing).all()
+    outfit = outfit_engine.generate_outfit(wardrobe, weather_data, style)
+    explanation_generator = ai_explainer.generate_explanation(outfit, weather_data, next_event)
 
-    wardrobe = db.query(Clothing).all() #fetch sql db
-    outfit = outfit_engine.generate_outfit(wardrobe, weather_data, style) #generate outfit
-    explanation = ai_explainer.generate_explanation(outfit, weather_data, next_event)
+    def byte_streamer():
+        for chunk in explanation_generator:
+            yield chunk.encode("utf-8")
 
-    return templates.TemplateResponse(
-        "outfit.html",
-        {
-            "request": request,
-            "outfit": outfit,
-            "explanation": explanation,
-        },
-    )
+    return StreamingResponse(byte_streamer(), media_type="text/plain")

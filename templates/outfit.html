@@ -14,7 +14,31 @@
 
     <div class="outfit-explanation">
         <h3>Why this outfit?</h3>
-        <p>{{ explanation }}</p>
+        <pre id="explanation"></pre>
+        <button id="generate-btn" class="button button-pink" >Generate Explanation</button>
     </div>
 </section>
+
+<script>
+document.getElementById("generate-btn").addEventListener("click", () => {
+    const explanationDiv = document.getElementById("explanation");
+    explanationDiv.textContent = "";
+
+    fetch("/generate")
+        .then(response => {
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+
+            function read() {
+                reader.read().then(({ done, value }) => {
+                    if (done) return;
+                    explanationDiv.textContent += decoder.decode(value);
+                    read();
+                });
+            }
+
+            read();
+        });
+});
+</script>
 {% endblock %}
