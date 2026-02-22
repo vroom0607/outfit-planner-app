@@ -6,6 +6,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
+from typing import List
 
 import weather
 import calendar_service
@@ -36,14 +37,15 @@ def home(request: Request):
 def upload_page(request: Request):
     return templates.TemplateResponse("upload.html", {"request": request})
 
-# Upload wardrobe route placeholder
 @app.post("/upload")
 async def upload_item(
     name: str = Form(...),
     category: str = Form(...),
     image: UploadFile = File(...),
+    tags: List[str] = Form([]),
     db: Session = Depends(get_db),
 ):
+    tags_str = " ".join(tags)
     extension = Path(image.filename or "").suffix or ".jpg"
     filename = f"{uuid4().hex}{extension}"
     file_path = UPLOAD_DIR / filename

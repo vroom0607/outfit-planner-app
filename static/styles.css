@@ -133,6 +133,29 @@ h2 {
     font-size: 0.95rem;
 }
 
+.tags-container input[type="checkbox"] {
+    display: none;
+}
+
+.tags-container .tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border-radius: 20px;
+    border: 1px solid #333;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.tags-container input[type="checkbox"]:checked + .tag {
+    background-color: #fca8ce; 
+    color: white;
+    border-color: #fca8ce;
+}
+
 .outfit-grid {
     display: grid;
     gap: 1rem;
