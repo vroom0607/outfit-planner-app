@@ -32,11 +32,12 @@ Base.metadata.create_all(bind=engine)
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-
+#upload page
 @app.get("/upload")
 def upload_page(request: Request):
     return templates.TemplateResponse("upload.html", {"request": request})
 
+#submit clothe item
 @app.post("/upload")
 async def upload_item(
     name: str = Form(...),
@@ -67,7 +68,7 @@ async def upload_item(
 
     return RedirectResponse(url="/wardrobe", status_code=303)
 
-
+#wardrobe page
 @app.get("/wardrobe")
 def wardrobe_page(request: Request, db: Session = Depends(get_db)):
     wardrobe = db.query(Clothing).order_by(Clothing.id.desc()).all()
@@ -79,8 +80,7 @@ def wardrobe_page(request: Request, db: Session = Depends(get_db)):
         },
     )
 
-
-# Generate outfit route placeholder
+#generate outfit 
 @app.get("/generate")
 def generate_outfit(request: Request, db: Session = Depends(get_db)):
     weather_data = weather.get_weather()

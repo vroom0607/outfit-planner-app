@@ -9,7 +9,7 @@
 - Get explanations for why an outfit was recommended.
 - View uploaded wardrobe and past outfit choices.
 
-This project was built for the 2026 CrimsonCode hackathon with the theme **"Reinventing the Wheel"**, demonstrating a new way to combine AI, weather, and personal wardrobe planning.
+This project was built for the 2026 CrimsonCode hackathon with the theme **"Reinventing the Wheel"**, demonstrating a new way to combine your calender, weather, and personal wardrobe planning.
 
 ---
 
@@ -17,9 +17,8 @@ This project was built for the 2026 CrimsonCode hackathon with the theme **"Rein
 
 - **Upload Wardrobe**: Users can upload clothing items with images, names, categories, and tags.
 - **Outfit Generator**: Automatically generates an outfit based on weather data, calendar events, and color harmony.
-- **Weather Integration**: Fetches real-time weather data using the OpenWeather API.
+- **Weather Integration**: Fetches real-time weather data using the WeatherAPI.
 - **Calendar Integration**: Connects with Google Calendar to suggest outfits appropriate for upcoming events.
-- **AI Explanations**: Provides natural-language explanations for outfit choices (using OpenAI API or mock logic for hackathon demo).
 - **Responsive Web Interface**: Minimalistic UI built with CSS+HTML and Jinja2 templates.
 
 ---
