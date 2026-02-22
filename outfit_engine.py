@@ -36,14 +36,14 @@ def generate_outfit(wardrobe, weather_data, event_type):
             outfit.append(choice)
 
     temp = weather_data.get("temp", 70)
-    raining = weather_data.get("rain", False)
+    precipitation = weather_data.get("precipitation", 0)
 
     if temp < 60:
         outerwear = pick_random(outerwear_choices)
         if outerwear:
             outfit.append(outerwear)
 
-    if raining:
+    if precipitation > 0:
         rain_ready = [item for item in outerwear_choices if "rain" in (item.tags or "").lower()]
         rain_item = pick_random(rain_ready) or pick_random(outerwear_choices)
         if rain_item and rain_item not in outfit:

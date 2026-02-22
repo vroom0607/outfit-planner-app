@@ -13,5 +13,5 @@ def get_weather(city="Pullman"):
 
     return {
         "temp": r["current"]["temp_f"],
-        "rain": r["current"]["condition"]["text"].lower().count("rain") > 0
+        "precipitation": r["current"]["precip_in"]
     }
