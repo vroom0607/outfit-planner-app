@@ -68,18 +68,6 @@ async def upload_item(
 
     return RedirectResponse(url="/wardrobe", status_code=303)
 
-#wardrobe page
-@app.get("/wardrobe")
-def wardrobe_page(request: Request, db: Session = Depends(get_db)):
-    wardrobe = db.query(Clothing).order_by(Clothing.id.desc()).all()
-    return templates.TemplateResponse(
-        "wardrobe.html",
-        {
-            "request": request,
-            "wardrobe": wardrobe,
-        },
-    )
-
 #generate outfit with weather data and calender
 @app.get("/generate")
 def generate_outfit(request: Request, db: Session = Depends(get_db)):
