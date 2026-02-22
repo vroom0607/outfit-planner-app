@@ -45,8 +45,8 @@ def get_model():
                     return llm
                 try:
                     llm = Llama(
-                        model_path="models/llama-nano-tiny-cpu-fast-top-q4_k_m.gguf",
-                        n_ctx=_env_int("LLM_N_CTX", 96),
+                        model_path="models/Llama-3.2-3B-Instruct-Q4_0.gguf",
+                        n_ctx=_env_int("LLM_N_CTX", 512),
                         n_threads=_env_int("LLM_N_THREADS", 2),
                         n_batch=_env_int("LLM_N_BATCH", 32),
                         n_gpu_layers=0,
@@ -54,7 +54,6 @@ def get_model():
                         use_mlock=False,
                         verbose=True,
                     )
-                    print("Model loaded on device:", llm.device)
                 except Exception as exc:
                     print(f"Failed to initialize Llama model. Falling back to template explanation: {exc}")
                     llm = False
@@ -73,7 +72,7 @@ def generate_explanation(outfit, weather, event_type):
     )
 
     prompt = (
-        f"You are a helpful fashion assistant. Explain why this outfit works: "
+        f"You are a helpful fashion assistant. Explain why this outfit works in 4 sentences. Mention the temperature, preciptiation, and event, and only talk about clothing given to you: "
         f"{item_descriptions}. Weather: {weather['temp']}°F, {weather['precipitation']} inches of precipitation. "
         f"Event: {event_type}."
     )
@@ -85,7 +84,7 @@ def generate_explanation(outfit, weather, event_type):
     try:
         response_iter = llm_instance.create_completion(
             prompt=templated_prompt,
-            max_tokens=80,
+            max_tokens=200,
             temperature=0.4,
             stream=True,
         )
