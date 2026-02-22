@@ -24,7 +24,7 @@ document.getElementById("generate-btn").addEventListener("click", () => {
     const explanationDiv = document.getElementById("explanation");
     explanationDiv.textContent = "";
 
-    fetch("/generate")
+    fetch("/generate/explanation")
         .then(response => {
             const reader = response.body.getReader();
             const decoder = new TextDecoder();

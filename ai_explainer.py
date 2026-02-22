@@ -41,4 +41,4 @@ def generate_explanation(outfit, weather, event_type):
 
     response_iter = llm_instance.stream_complete(prompt=templated_prompt, max_tokens=100)
     for chunk in response_iter:
-        yield chunk.delta.encode("utf-8")
+        yield chunk.delta

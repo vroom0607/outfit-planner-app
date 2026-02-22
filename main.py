@@ -69,9 +69,27 @@ async def upload_item(
 
     return RedirectResponse(url="/wardrobe", status_code=303)
 
-#generate outfit with weather data and calender
+# generate outfit page
 @app.get("/generate")
-def generate_outfit_stream(db: Session = Depends(get_db)):
+def generate_outfit_page(request: Request, db: Session = Depends(get_db)):
+    weather_data = weather.get_weather()
+    next_event = calendar_service.get_next_event()
+    style = outfit_engine.map_event_to_style(next_event)
+    wardrobe = db.query(Clothing).all()
+    outfit = outfit_engine.generate_outfit(wardrobe, weather_data, style)
+
+    return templates.TemplateResponse(
+        "outfit.html",
+        {
+            "request": request,
+            "outfit": outfit,
+        },
+    )
+
+
+# stream explanation for a generated outfit
+@app.get("/generate/explanation")
+def generate_outfit_explanation(db: Session = Depends(get_db)):
     weather_data = weather.get_weather()
     next_event = calendar_service.get_next_event()
     style = outfit_engine.map_event_to_style(next_event)
