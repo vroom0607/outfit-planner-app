@@ -49,3 +49,9 @@ This project was built for the 2026 CrimsonCode hackathon with the theme **"Rein
 │   └── helpers.py
 └── weather.py
 
+## To Run
+
+Create a Python enviroment
+pip install requirements.txt
+use uvicorn:
+uvicorn main:app --reload
