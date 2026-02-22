@@ -1,6 +1,6 @@
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-from datetime import datetime
+from datetime import datetime, timezone
 
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
@@ -8,7 +8,7 @@ def get_next_event():
     creds = Credentials.from_authorized_user_file("token.json", SCOPES)
     service = build("calendar", "v3", credentials=creds)
 
-    now = datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+    now = datetime.now(timezone.utc).isoformat()
     events_result = service.events().list(
         calendarId='primary',
         timeMin=now,

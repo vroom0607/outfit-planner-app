@@ -80,15 +80,15 @@ def wardrobe_page(request: Request, db: Session = Depends(get_db)):
         },
     )
 
-#generate outfit 
+#generate outfit with weather data and calender
 @app.get("/generate")
 def generate_outfit(request: Request, db: Session = Depends(get_db)):
-    weather_data = weather.get_weather()
-    next_event = calendar_service.get_next_event()
-    style = outfit_engine.map_event_to_style(next_event)
+    weather_data = weather.get_weather() #create weather dict
+    next_event = calendar_service.get_next_event() #create calender events dict
+    style = outfit_engine.map_event_to_style(next_event) #create style dict
 
-    wardrobe = db.query(Clothing).all()
-    outfit = outfit_engine.generate_outfit(wardrobe, weather_data, style)
+    wardrobe = db.query(Clothing).all() #fetch sql db
+    outfit = outfit_engine.generate_outfit(wardrobe, weather_data, style) #generate outfit
     explanation = ai_explainer.generate_explanation(outfit, weather_data, next_event)
 
     return templates.TemplateResponse(
