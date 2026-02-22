@@ -17,7 +17,7 @@ def get_model():
                     model_path="models/llama-nano-tiny-cpu-fast-top-q4_k_m.gguf",
                     n_ctx=128,
                     n_threads=4,
-                    n_gpu_layers=-1,
+                    n_gpu_layers=0,
                     verbose=True
                 )
                 print("Model loaded on device:", llm.device)
