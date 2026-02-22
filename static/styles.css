@@ -133,14 +133,21 @@ h2 {
     font-size: 0.95rem;
 }
 
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center; /* aligns label content vertically */
+}
+
 .tags-container input[type="checkbox"] {
-    display: none;
+    display: none; /* keep checkbox hidden */
 }
 
 .tags-container .tag {
-    display: inline-block;
+    display: inline-flex;       /* allows horizontal alignment inside label */
+    align-items: center;        /* centers text vertically */
     padding: 0.5rem 1rem;
-    margin: 0.25rem;
     border-radius: 20px;
     border: 1px solid #333;
     background-color: #f3f4f6;
